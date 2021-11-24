@@ -7,7 +7,7 @@ import java.util.Map;
 public class MemoryMemberRepository implements MemberRepository {
 
     //저장소 -> Map
-    private Map<Long, Member> store = new HashMap<>();
+    private static Map<Long, Member> store = new HashMap<>();
     //MemberRepository 함수 오버라이드
     @Override
     public void save(Member member) {

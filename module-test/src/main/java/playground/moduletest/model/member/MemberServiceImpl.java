@@ -10,7 +10,13 @@ public class MemberServiceImpl implements MemberService{
      * MemoryMemberRepository에 있는 MemberRepository 인터페이스가 아니라
      * MemoryMemberRepository에 있는 Override 한 save() 가 호출됨
      */
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    //생성자를 통해 memberRepository에 어떤 구현체가 들어갈지 정함
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public void join(Member member) {
