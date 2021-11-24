@@ -21,7 +21,7 @@ public class OrderApp {
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);//1에 값을 넣고 : memberService.join(member)
 
-        Order order = orderService.createOrder(memberId, "itemA", 10000); //2에서 값을 뺴: orderService.createOrder.createOrder()
+        Order order = orderService.createOrder(memberId, "itemA", 20000); //2에서 값을 뺴: orderService.createOrder.createOrder()
 
         System.out.println("order = " + order);
         System.out.println("order.calculatePrice = " + order.calculatePrice());
