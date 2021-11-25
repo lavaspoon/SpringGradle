@@ -1,5 +1,7 @@
 package playground.moduletest;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import playground.moduletest.model.member.Grade;
 import playground.moduletest.model.member.Member;
 import playground.moduletest.model.member.MemberService;
@@ -10,10 +12,14 @@ import playground.moduletest.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
+        //스프링컨테이너 생성
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+        //AppConfig appConfig = new AppConfig();
+        //MemberService memberService = appConfig.memberService();
+        //OrderService orderService = appConfig.orderService();
 
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();
-        OrderService orderService = appConfig.orderService();
         //MemberService memberService = new MemberServiceImpl(); //1
         //OrderService orderService = new OrderServiceImpl(); //2
 
