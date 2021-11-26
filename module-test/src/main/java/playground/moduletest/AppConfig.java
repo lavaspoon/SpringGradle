@@ -27,22 +27,33 @@ public class AppConfig {
     /**
      * 리팩토링
      */
+
+    /**
+     *
+     *  . @Bean -> memberService -> new MemoryMemberRepository
+     *  . @Bean -> 스프링 생성될때 orderService() 메서드 호출 -> new MemoryMemberRepository
+     */
+
         @Bean
         public MemberService memberService() {
             //생성자 주입
-            return new MemberServiceImpl(getMemberRepository()); //MemoryMemberRepository를 넘겨주면 생성자에 주입됨
+            System.out.println("call - AppConfig.memberService");
+            return new MemberServiceImpl(memberRepository()); //MemoryMemberRepository를 넘겨주면 생성자에 주입됨
         }
         @Bean
-        public MemberRepository getMemberRepository() {
+        public MemberRepository memberRepository() {
+            System.out.println("call - AppConfig.memberRepository");
             return new MemoryMemberRepository();
         }
         @Bean
         public OrderService orderService() {
             //생성자 주입 (DiscountPolicy - FixDiscount, RateDiscount 선택)
-            return new OrderServiceImpl(getMemberRepository(), discountPolicy());
+            System.out.println("call - AppConfig.orderService");
+            return new OrderServiceImpl(memberRepository(), discountPolicy());
         }
         @Bean
         public DiscountPolicy discountPolicy() {
+            System.out.println("call - AppConfig.discountPolicy");
             return new RateDiscountPolicy();
         }
 }
