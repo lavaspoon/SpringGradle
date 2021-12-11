@@ -37,23 +37,23 @@ public class AppConfig {
         @Bean
         public MemberService memberService() {
             //생성자 주입
-            System.out.println("call - AppConfig.memberService");
+            //System.out.println("call - AppConfig.memberService");
             return new MemberServiceImpl(memberRepository()); //MemoryMemberRepository를 넘겨주면 생성자에 주입됨
         }
         @Bean
         public MemberRepository memberRepository() {
-            System.out.println("call - AppConfig.memberRepository");
+            //System.out.println("call - AppConfig.memberRepository");
             return new MemoryMemberRepository();
         }
         @Bean
         public OrderService orderService() {
             //생성자 주입 (DiscountPolicy - FixDiscount, RateDiscount 선택)
-            System.out.println("call - AppConfig.orderService");
+            //System.out.println("call - AppConfig.orderService");
             return new OrderServiceImpl(memberRepository(), discountPolicy());
         }
         @Bean
         public DiscountPolicy discountPolicy() {
-            System.out.println("call - AppConfig.discountPolicy");
+            //System.out.println("call - AppConfig.discountPolicy");
             return new RateDiscountPolicy();
         }
 }
