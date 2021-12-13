@@ -31,4 +31,20 @@ $(document).ready(function(){
             }
         });
     });
+
+    $('#btn3').on('click', function(){
+        $.ajax({
+            url: "requestObject/procedure",
+            type: "POST",
+            data:
+                $("#procedure").serialize(),
+            success: function(data){
+                $('#result').text(data);
+            },
+            error: function(){
+                alert("serialize err");
+            }
+        });
+    });
+
 });

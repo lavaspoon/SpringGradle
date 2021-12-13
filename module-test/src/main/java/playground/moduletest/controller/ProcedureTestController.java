@@ -34,4 +34,11 @@ public class ProcedureTestController {
         //필요한 로직 처리
         return jamong.getName() + jamong.getAge();
     }
+
+    @RequestMapping(value="/procedure", method=RequestMethod.POST)
+    @ResponseBody
+    public void serialize(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        System.out.println("id = " + id);
+    }
 }
